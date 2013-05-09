@@ -1,0 +1,9 @@
+---
+en:
+  spree:
+    add_group_price: Add Group Price
+    discount_type: Discount Type
+    group_prices: Group Prices
+    group_pricing: Group Pricing
+    position: Position
+    range: Range
