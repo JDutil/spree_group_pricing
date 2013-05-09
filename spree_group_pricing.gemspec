@@ -2,8 +2,8 @@ Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = 'spree_group_pricing'
   s.version     = '2.0.0.beta'
-  s.summary     = 'Allow prices to be configured in quantity ranges for each variant'
-  s.description = 'Allow prices to be configured in quantity ranges for each variant'
+  s.summary     = 'Group pricing for product orders.'
+  s.description = 'Similar to volume pricing, but rather than calculating discount based upon quantity in current order we calculate based on quantity of all orders.'
   s.required_ruby_version = '>= 1.9.3'
 
   s.author            = 'Jeff Dutil'
