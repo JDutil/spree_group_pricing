@@ -1,0 +1,31 @@
+<%= render 'spree/admin/shared/product_sub_menu' %>
+<%= render :partial => 'spree/admin/shared/product_tabs', :locals => {:current => "Group Pricing"} %>
+<%= render "spree/shared/error_messages", :target => @variant %>
+
+<%= form_for(@variant, :url => spree.admin_product_variant_url(@product, @variant), :html => { :method => :put }) do |f| %>
+  <h3><%= Spree.t("group_prices") %></h3>
+  <table class="index">
+    <thead>
+      <tr>
+        <th><%= Spree.t("name") %></th>
+        <th><%= Spree.t("discount_type") %></th>
+        <th><%= Spree.t("range") %></th>
+        <th><%= Spree.t("amount") %></th>
+        <th><%= Spree.t("position") %></th>
+        <th><%= Spree.t("action") %></th>
+      </tr>
+    </thead>
+    <tbody id="group_prices">
+      <%= f.fields_for :group_prices do |vp_form| %>
+        <%= render 'group_price_fields', :f => vp_form %>
+      <% end %>
+    </tbody>
+  </table>
+  <%= link_to_with_icon('icon-plus', Spree.t("add_group_price"), 'javascript:', :data => { :target => "tbody#group_prices" }, :class => "spree_add_fields") %>
+  <br/><br/>
+  <div class="form-buttons filter-actions actions" data-hook="buttons">
+    <%= button Spree.t('actions.update'), 'icon-refresh' %>
+    <span class="or"><%= Spree.t(:or) %></span>
+    <%= button_link_to Spree.t('actions.cancel'), spree.edit_admin_product_path(@product), :icon => 'icon-remove' %>
+  </div>
+<% end %>

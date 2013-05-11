@@ -1,20 +1,20 @@
-<h3><%= t("group_prices") %></h3>
+<h3><%= Spree.t("group_prices") %></h3>
 <table class="index">
   <thead>
     <tr>
-      <th><%= t("name") %></th>
-      <th><%= t("discount_type") %></th>
-      <th><%= t("range") %></th>
-      <th><%= t("amount") %></th>
-      <th><%= t("position") %></th>
-      <th><%= t("action") %></th>
+      <th><%= Spree.t("name") %></th>
+      <th><%= Spree.t("discount_type") %></th>
+      <th><%= Spree.t("range") %></th>
+      <th><%= Spree.t("amount") %></th>
+      <th><%= Spree.t("position") %></th>
+      <th><%= Spree.t("action") %></th>
     </tr>
   </thead>
   <tbody id="group_prices">
     <%= f.fields_for :group_prices do |vp_form| %>
-      <%= render 'group_price_fields', :f => vp_form %>
+      <%= render 'spree/admin/group_prices/group_price_fields', :f => vp_form %>
     <% end %>
   </tbody>
 </table>
-<%= link_to_add_fields t("add_group_price"), "tbody#group_prices" %>
+<%= link_to_add_fields Spree.t("add_group_price"), "tbody#group_prices" %>
 <br/><br/>

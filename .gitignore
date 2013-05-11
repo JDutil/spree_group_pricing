@@ -1,5 +1,6 @@
 *.DS_Store
 *.swp
+.sass-cache
 pkg
 Gemfile.lock
 spec/dummy

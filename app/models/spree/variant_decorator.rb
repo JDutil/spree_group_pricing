@@ -1,4 +1,5 @@
 Spree::Variant.class_eval do
+
   has_many :group_prices, :order => :position, :dependent => :destroy
   accepts_nested_attributes_for :group_prices, :allow_destroy => true
 

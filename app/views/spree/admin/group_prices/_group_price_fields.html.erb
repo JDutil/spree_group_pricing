@@ -20,6 +20,7 @@
     <%= f.text_field :position, :size => 3 %>
   </td>
   <td valign="actions">
-    <%= link_to_remove_fields t("remove"), f %>
+    <%= link_to_with_icon('icon-trash', Spree.t("remove"), spree.admin_product_variant_path(@product, @variant), :class => "spree_remove_fields", :data => {:action => 'remove'}, :title => Spree.t(:remove)) + f.hidden_field(:_destroy)
+%>
   </td>
 </tr>

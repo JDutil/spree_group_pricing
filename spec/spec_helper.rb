@@ -9,11 +9,11 @@ require 'factory_girl'
 require 'ffaker'
 require 'shoulda-matchers'
 
-#include spree's factories
 require 'spree/testing_support/factories'
 require 'spree/testing_support/authorization_helpers'
+require 'spree/testing_support/capybara_ext'
 require 'spree/testing_support/controller_requests'
-require 'spree/testing_support/authorization_helpers'
+require 'spree/testing_support/preferences'
 require 'spree/testing_support/url_helpers'
 
 require 'spree_group_pricing/factories'
@@ -25,8 +25,10 @@ Dir[File.join(File.dirname(__FILE__), 'support/**/*.rb')].each { |f| require f }
 RSpec.configure do |config|
   config.mock_with :rspec
   config.include FactoryGirl::Syntax::Methods
-  config.include Spree::TestingSupport::UrlHelpers
   config.include Spree::TestingSupport::ControllerRequests
+  config.include Spree::TestingSupport::Flash
+  config.include Spree::TestingSupport::Preferences
+  config.include Spree::TestingSupport::UrlHelpers
 
   # Capybara javascript drivers require transactional fixtures set to false, and we use DatabaseCleaner
   # to cleanup after each test instead.  Without transactional fixtures set to false the records created

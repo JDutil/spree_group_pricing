@@ -1,3 +1,3 @@
 source 'https://rubygems.org'
-gem 'spree', github: 'spree/spree'
+gem 'spree', path:'~/Code/spree'#github: 'spree/spree'
 gemspec
