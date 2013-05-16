@@ -1,3 +1,3 @@
 source 'https://rubygems.org'
-gem 'spree', github: 'spree/spree'
+gem 'spree', github: 'jdutil/spree', branch: 'capybara2'
 gemspec
