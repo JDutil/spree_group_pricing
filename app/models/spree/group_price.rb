@@ -24,4 +24,5 @@ class Spree::GroupPrice < ActiveRecord::Base
   def open_ended?
     OPEN_ENDED =~ range
   end
+
 end
