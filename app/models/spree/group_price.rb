@@ -11,6 +11,14 @@ class Spree::GroupPrice < ActiveRecord::Base
 
   OPEN_ENDED = /\(?[0-9]+\+\)?/
 
+  def display_discount
+    case discount_type
+    when 'dollar' then "$#{amount.round(2)} off"
+    when 'percent' then "#{amount.to_i}%"
+    when 'price' then "price becomes $#{amount.round(2)}"
+    end
+  end
+
   def include?(quantity)
     if open_ended?
       bound = /\d+/.match(range)[0].to_i

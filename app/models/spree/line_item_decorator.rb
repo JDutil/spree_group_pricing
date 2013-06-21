@@ -1,4 +1,5 @@
 Spree::LineItem.class_eval do
+
   # pattern grabbed from: http://stackoverflow.com/questions/4470108/
 
   # the idea here is compatibility with spree_sale_products
@@ -11,7 +12,7 @@ Spree::LineItem.class_eval do
     new_price = self.price
 
     if variant and changed? and changes.keys.include? 'quantity'
-      vprice = self.variant.group_price(self.quantity)
+      vprice = self.variant.group_price(self.quantity + self.variant.product_quantity_ordered)
 
       if (!new_price.nil? and vprice <= new_price) or vprice <= self.price
         return self.price = vprice
@@ -25,4 +26,3 @@ Spree::LineItem.class_eval do
     end
   end
 end
-
