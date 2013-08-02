@@ -38,7 +38,7 @@ describe Spree::Variant do
     context 'discount_type = percent' do
       before :each do
         @variant = create :variant, :price => 10
-        @variant.group_prices.create! :amount => 0.1, :discount_type => 'percent', :range => '(10+)'
+        @variant.group_prices.create! :amount => 10, :discount_type => 'percent', :range => '(10+)'
       end
 
       it 'should use the variants price when it does not match a range' do

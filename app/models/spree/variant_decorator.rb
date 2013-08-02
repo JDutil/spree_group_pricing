@@ -27,7 +27,7 @@ Spree::Variant.class_eval do
           when 'dollar'
             return self.price - group_price.amount
           when 'percent'
-            return self.price * (1 - group_price.amount)
+            return self.price * (1 - (group_price.amount / 100))
           end
         end
       end
