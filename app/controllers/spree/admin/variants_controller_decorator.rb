@@ -19,8 +19,8 @@ Spree::Admin::VariantsController.class_eval do
   end
 
   def location_after_save
-    if @product.master.id == @variant.id and params[:variant].has_key? :group_prices_attributes
-      return spree.admin_product_variant_group_prices_path(@product, @variant)
+    if @variant.is_master? and params[:variant].has_key? :group_prices_attributes
+      return spree.admin_product_variant_group_prices_path(@variant.product, @variant)
     end
 
     super
