@@ -1,5 +1,5 @@
-Group Pricing
-==============
+Spree Group Pricing
+===================
 
 [![Build Status](https://secure.travis-ci.org/jdutil/spree_group_pricing.png)](http://travis-ci.org/jdutil/spree_group_pricing)
 [![Code Climate](https://codeclimate.com/github/jdutil/spree_group_pricing.png)](https://codeclimate.com/github/jdutil/spree_group_pricing)
@@ -7,6 +7,10 @@ Group Pricing
 [![Dependency Status](https://gemnasium.com/jdutil/spree_group_pricing.png?travis)](https://gemnasium.com/jdutil/spree_group_pricing)
 
 Group Pricing is an extension to Spree that uses predefined ranges of sale quantities to determine the price for a particular product variant.  For instance, this allows you to set a price for group purchases between 1-10, another price for purchases between (10-100) and another for purchases of 100 or more.  If no group price is defined for a variant, then the standard price is used.
+
+This differs from the Spree Volume Pricing extension in that the volume pricing is based upon what quantity of a variant you are currently ordering.  Where as Spree Group Pricing will calculate pricing based upon what quantity of a variant have been sold in all completed orders.
+
+NOTE: If you want all orders of the product to receive the group purchase price then you cannot collect payment for orders until after you have received all orders, updated the price & order totals, and then capture payment.  At the moment it is required for you to implement this within your application yourself.
 
 Each GroupPrice contains the following values:
 

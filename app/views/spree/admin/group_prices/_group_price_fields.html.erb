@@ -12,15 +12,22 @@
     <%= f.text_field :amount, :size => 10 %>
   </td>
   <td>
-    <%= error_message_on(f.object, :range) %>
-    <%= f.text_field :range, :size => 10 %>
+    <%= error_message_on(f.object, :start_range) %>
+    <%= f.text_field :start_range, :size => 10 %>
+  </td>
+  <td>
+    <%= error_message_on(f.object, :end_range) %>
+    <%= f.text_field :end_range, :size => 10 %>
   </td>
   <td>
     <%= error_message_on(f.object, :position) %>
     <%= f.text_field :position, :size => 3 %>
   </td>
   <td valign="actions">
-    <%= link_to_with_icon('icon-trash', Spree.t("remove"), spree.admin_product_variant_path(@product, @variant), :class => "spree_remove_fields", :data => {:action => 'remove'}, :title => Spree.t(:remove)) + f.hidden_field(:_destroy)
-%>
+    <% if f.object.new_record? %>
+      <%= link_to_with_icon('icon-trash', Spree.t("remove"), '#', :class => "spree_remove_fields", :data => {:action => 'remove'}, :title => Spree.t(:remove)) + f.hidden_field(:_destroy) %>
+    <% else %>
+      <%= link_to_with_icon('icon-trash', Spree.t("remove"), spree.admin_product_variant_group_price_path(@product, @variant, f.object), :class => "spree_remove_fields", :data => {:action => 'remove'}, :title => Spree.t(:remove)) + f.hidden_field(:_destroy) %>
+    <% end %>
   </td>
 </tr>

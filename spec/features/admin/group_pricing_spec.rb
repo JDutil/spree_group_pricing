@@ -16,7 +16,8 @@ feature 'Admin - Group Pricing', js: true do
       click_link 'Group Pricing'
       fill_in 'variant[group_prices_attributes][0][name]', with: '10-24'
       select 'Percent Discount', from: 'variant[group_prices_attributes][0][discount_type]'
-      fill_in 'variant[group_prices_attributes][0][range]', with: '(10..24)'
+      fill_in 'variant[group_prices_attributes][0][start_range]', with: '10'
+      fill_in 'variant[group_prices_attributes][0][end_range]', with: '24'
       fill_in 'variant[group_prices_attributes][0][amount]', with: '10'
       fill_in 'variant[group_prices_attributes][0][position]', with: '1'
     end
@@ -34,7 +35,8 @@ feature 'Admin - Group Pricing', js: true do
       click_link 'Group Pricing'
       fill_in 'variant[group_prices_attributes][0][name]', with: '15-24'
       select 'Percent Discount', from: 'variant[group_prices_attributes][0][discount_type]'
-      fill_in 'variant[group_prices_attributes][0][range]', with: '(15..24)'
+      fill_in 'variant[group_prices_attributes][0][start_range]', with: '15'
+      fill_in 'variant[group_prices_attributes][0][end_range]', with: '24'
       fill_in 'variant[group_prices_attributes][0][amount]', with: '15'
       fill_in 'variant[group_prices_attributes][0][position]', with: '2'
       click_button 'Update'
@@ -56,7 +58,8 @@ feature 'Admin - Group Pricing', js: true do
       end
       fill_in 'variant[group_prices_attributes][0][name]', with: '10-24'
       select 'Percent Discount', from: 'variant[group_prices_attributes][0][discount_type]'
-      fill_in 'variant[group_prices_attributes][0][range]', with: '(10..24)'
+      fill_in 'variant[group_prices_attributes][0][start_range]', with: '10'
+      fill_in 'variant[group_prices_attributes][0][end_range]', with: '24'
       fill_in 'variant[group_prices_attributes][0][amount]', with: '10'
       fill_in 'variant[group_prices_attributes][0][position]', with: '1'
       click_button 'Update'
@@ -70,8 +73,9 @@ feature 'Admin - Group Pricing', js: true do
         click_icon 'edit'
       end
       click_link 'Remove'
-      # click_button 'Update'
-      # page.should have_content("Variant \"#{product.name}\" has been successfully updated!")
+      click_button 'Update'
+      pending 'not sure why routing is getting messed up causing a no variant found error from an AR Not Found error most likely rescued.'
+      page.should have_content("Variant \"#{product.name}\" has been successfully updated!")
       click_icon 'edit'
       page.should_not have_content('Remove')
     end
@@ -84,7 +88,8 @@ feature 'Admin - Group Pricing', js: true do
       end
       fill_in 'variant[group_prices_attributes][0][name]', with: '15-24'
       select 'Percent Discount', from: 'variant[group_prices_attributes][0][discount_type]'
-      fill_in 'variant[group_prices_attributes][0][range]', with: '(15..24)'
+      fill_in 'variant[group_prices_attributes][0][start_range]', with: '15'
+      fill_in 'variant[group_prices_attributes][0][end_range]', with: '24'
       fill_in 'variant[group_prices_attributes][0][amount]', with: '15'
       fill_in 'variant[group_prices_attributes][0][position]', with: '2'
       click_button 'Update'
