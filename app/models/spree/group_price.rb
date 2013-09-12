@@ -47,7 +47,7 @@ class Spree::GroupPrice < ActiveRecord::Base
   def start_range
     return @start_range if @start_range
     return nil if range.blank?
-    range.gsub(/\(|\)/, '').split(/.{2,3}|\+/)[0]
+    range.gsub(/\(|\)/, '').split(/\.{2,3}|\+/)[0]
   end
 
   private
