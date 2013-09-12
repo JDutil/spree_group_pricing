@@ -18,9 +18,9 @@ class Spree::GroupPrice < ActiveRecord::Base
 
   def display_discount
     case discount_type
-    when 'dollar' then "$#{amount.round(2)} off"
+    when 'dollar' then "#{Spree::Money.new(amount)} off"
     when 'percent' then "#{amount.to_i}%"
-    when 'price' then "price becomes $#{amount.round(2)}"
+    when 'price' then "price becomes #{Spree::Money.new(amount)}"
     end
   end
 
