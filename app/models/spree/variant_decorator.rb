@@ -5,6 +5,8 @@ Spree::Variant.class_eval do
 
   attr_accessible :group_prices_attributes
 
+  validates_associated :group_prices
+
   def current_group_price
     self.group_prices.each do |group_price|
       if group_price.include?(product_quantity_ordered)
