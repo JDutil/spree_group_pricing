@@ -54,12 +54,6 @@ describe Spree::GroupPrice do
       @group_price.range = "10+"
       @group_price.should be_valid
     end
-    it "should not consider a range of 1-2 to valid" do
-      @group_price.end_range = nil
-      @group_price.start_range = nil
-      @group_price.range = "1-2"
-      @group_price.should_not be_valid
-    end
     it "should not consider a range of foo to valid" do
       @group_price.end_range = nil
       @group_price.start_range = nil
