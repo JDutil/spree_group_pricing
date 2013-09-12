@@ -60,12 +60,6 @@ describe Spree::GroupPrice do
       @group_price.range = "1-2"
       @group_price.should_not be_valid
     end
-    it "should not consider a range of 1 to valid" do
-      @group_price.end_range = nil
-      @group_price.start_range = nil
-      @group_price.range = "1"
-      @group_price.should_not be_valid
-    end
     it "should not consider a range of foo to valid" do
       @group_price.end_range = nil
       @group_price.start_range = nil
@@ -74,7 +68,7 @@ describe Spree::GroupPrice do
     end
   end
   
-  describe "include?"  do    
+  describe "include?"  do
     it "should not match a quantity that fails to fall within the specified range" do
       @group_price.range = "(10..20)"
       @group_price.should_not include(21)
@@ -105,6 +99,32 @@ describe Spree::GroupPrice do
     it "should not match a quantity that is less then the value of an open ended range" do
       @group_price.range = "(50+)"
       @group_price.should_not include(40)
-    end    
+    end
   end
+
+  context 'start and end range values' do
+
+    before do
+      @record1 = create(:group_price, start_range: 1, end_range: 2)
+      @record1.update_attribute :range, '(1..2)'
+      @record2 = create(:group_price, start_range: 1, end_range: 2)
+      @record2.update_attribute :range, '(1...2)'
+      @record3 = create(:group_price, start_range: 1, end_range: 2)
+      @record3.end_range = nil
+      @record3.update_attribute :range, '(1+)'
+    end
+
+    it '#end_range' do
+      @record1.end_range.should eql(2)
+      @record2.end_range.should eql(2)
+      @record3.end_range.should be_nil
+    end
+
+    it '#start_range' do
+      @record1.start_range.should eql(1)
+      @record2.start_range.should eql(1)
+      @record3.start_range.should eql(1)
+    end
+  end
+
 end

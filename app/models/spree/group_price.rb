@@ -24,6 +24,12 @@ class Spree::GroupPrice < ActiveRecord::Base
     end
   end
 
+  def end_range
+    return @end_range if @end_range
+    return nil if range.blank?
+    range.gsub(/\(|\)/, '').split(/\.{2,3}|\+/)[1]
+  end
+
   def include?(quantity)
     if open_ended?
       bound = /\d+/.match(range)[0].to_i
@@ -36,6 +42,12 @@ class Spree::GroupPrice < ActiveRecord::Base
   # indicates whether or not the range is a true Ruby range or an open ended range with no upper bound
   def open_ended?
     OPEN_ENDED =~ range
+  end
+
+  def start_range
+    return @start_range if @start_range
+    return nil if range.blank?
+    range.gsub(/\(|\)/, '').split(/.{2,3}|\+/)[0]
   end
 
   private
