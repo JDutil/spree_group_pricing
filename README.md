@@ -128,19 +128,19 @@ bundle exec rspec spec
 Contributing
 ------------
 
-In the spirit of [free software](http://www.fsf.org/licensing/essays/free-sw.html), **everyone** is encouraged to help improve this project.
+In the spirit of [free software][1], **everyone** is encouraged to help improve this project.
 
 Here are some ways *you* can contribute:
 
 * by using prerelease versions
-* by reporting [bugs](https://github.com/jdutil/spree_group_pricing/issues)
+* by reporting [bugs][2]
 * by suggesting new features
-* by [translating to a new language](https://github.com/jdutil/spree_group_pricing/tree/master/config/locales)
+* by [translating to a new language][3]
 * by writing or editing documentation
 * by writing specifications
 * by writing code (*no patch is too small*: fix typos, add comments, clean up inconsistent whitespace)
 * by refactoring code
-* by resolving [issues](https://github.com/jdutil/spree_group_pricing/issues)
+* by resolving [issues][2]
 * by reviewing patches
 
 Donating
@@ -148,4 +148,11 @@ Donating
 
 Bitcoin donations may be sent to: 1Fuh36ttnERYqsrnLW6NmxE8pXoFDNTSn6
 
-Copyright (c) 2013 Jeff Dutil, released under the [New BSD License](https://github.com/jdutil/spree_drop_ship/tree/master/LICENSE).
+Copyright (c) 2014 [Jeff Dutil][4] and [contributors][5], released under the [New BSD License][6].
+
+[1]: http://www.fsf.org/licensing/essays/free-sw.html
+[2]: https://github.com/jdutil/spree_group_pricing/issue
+[3]: https://github.com/jdutil/spree_group_pricing/tree/master/config/locale
+[4]: https://github.com/jdutil
+[5]: https://github.com/jdutil/spree_group_pricing/graphs/contributors
+[6]: https://github.com/jdutil/spree_group_pricing/blob/master/LICENSE.md

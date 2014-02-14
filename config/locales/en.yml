@@ -1,4 +1,13 @@
+---
 en:
+  activerecord:
+    attributes:
+      spree/group_price:
+        amount: Amount
+        discount_type: Discount Type
+        name: Name
+        range: Range
+        position: Position
   spree:
     add_group_price: Add Group Price
     discount_type: Discount Type
@@ -8,3 +17,11 @@ en:
     position: Position
     range: Range
     start_range: Start Range
+    dollar_off: 'off'
+    price_becomes: price becomes
+    percent_discount: Percent Discount
+    dollar_discount: Dollar Discount
+    fixed_price: Fixed Price
+    validation:
+      discount_type_presence: is not a valid Group Price Type
+      range_format: "must be in one of the following formats: (a..b), (a...b), (a+)"

@@ -1,0 +1,27 @@
+---
+sv:
+  activerecord:
+    attributes:
+      spree/group_price:
+        amount: Belopp
+        discount_type: Rabatt typ
+        name: Namn
+        range: Omfång
+        position: Position
+  spree:
+    add_group_price: Lägg till grupp pris
+    discount_type: Rabatt typ
+    end_range: Slut omfång
+    group_prices: Grupp priser
+    group_pricing: Grupp prissättning
+    position: Position
+    range: Omfång
+    start_range: Start omfång
+    dollar_off: rabatt
+    price_becomes: pris blir
+    percent_discount: Procent rabatt
+    dollar_discount: Dollar rabatt
+    fixed_price: Fixed Price
+    validation:
+      discount_type_presence: är inte en giltlig typ av grupp pris
+      range_format: "måste vara i ett av följande format: (a..b), (a...b), (a+)"

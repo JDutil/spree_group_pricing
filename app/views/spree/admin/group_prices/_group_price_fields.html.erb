@@ -1,14 +1,12 @@
 <tr class="group_price fields">
   <td>
-    <%= error_message_on(f.object, :name) %>
     <%= f.text_field :name, :size => 10 %>
   </td>
   <td>
     <%= error_message_on(f.object, :discount_type) %>
-    <%= f.select :discount_type, [['Percent Discount', 'percent'], ['Dollar Discount', 'dollar'], ['Fixed Price', 'price']] %>
+    <%= f.select :discount_type, options_for_select([[Spree.t(:percent_discount), 'percent'], [Spree.t(:dollar_discount), 'dollar'], [Spree.t(:fixed_price), 'price']], { index: nil }), {}, class: 'fullwidth' %>
   </td>
   <td>
-    <%= error_message_on(f.object, :amount) %>
     <%= f.text_field :amount, :size => 10 %>
   </td>
   <td>
@@ -20,14 +18,14 @@
     <%= f.text_field :end_range, :size => 10 %>
   </td>
   <td>
-    <%= error_message_on(f.object, :position) %>
     <%= f.text_field :position, :size => 3 %>
   </td>
-  <td valign="actions">
-    <% if f.object.new_record? %>
-      <%= link_to_with_icon('icon-trash', Spree.t("remove"), '#', :class => "spree_remove_fields", :data => {:action => 'remove'}, :title => Spree.t(:remove)) + f.hidden_field(:_destroy) %>
-    <% else %>
-      <%= link_to_with_icon('icon-trash', Spree.t("remove"), spree.admin_product_variant_group_price_path(@product, @variant, f.object), :class => "spree_remove_fields", :data => {:action => 'remove'}, :title => Spree.t(:remove)) + f.hidden_field(:_destroy) %>
-    <% end %>
+  <td class="actions">
+    <%= link_to(icon('delete'),
+      spree.admin_product_variant_path(@product, @variant),
+      class: 'icon_link icon-trash with-tip no-text spree_remove_fields',
+      title: Spree.t(:remove), data: { action: :remove }) %>
+
+    <%= f.hidden_field(:_destroy) %>
   </td>
 </tr>
