@@ -4,8 +4,8 @@ describe Spree::LineItem do
   before :each do
     @order = create(:order)
     @variant = create(:variant, :price => 10)
-    @variant.group_prices.create! :amount => 9, :discount_type => 'price', :range => '(2..4)'
-    @variant.group_prices.create! :amount => 8, :discount_type => 'price', :range => '(5+)'
+    @variant.group_prices.create! :name => '2 to 4', :amount => 9, :discount_type => 'price', :range => '(2..4)'
+    @variant.group_prices.create! :name => '5 or more', :amount => 8, :discount_type => 'price', :range => '(5+)'
     @order.contents.add(@variant, 1)
     @line_item = @order.line_items.first
   end

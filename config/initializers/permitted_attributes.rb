@@ -1,0 +1,1 @@
+Spree::PermittedAttributes.variant_attributes << :group_prices_attributes

@@ -8,7 +8,7 @@ describe Spree::Variant do
     context 'discount_type = price' do
       before :each do
         @variant = create :variant, :price => 10
-        @variant.group_prices.create! :amount => 9, :discount_type => 'price', :range => '(10+)'
+        @variant.group_prices.create! :name => '10 or more', :amount => 9, :discount_type => 'price', :range => '(10+)'
       end
 
       it 'should use the variants price when it does not match a range' do
@@ -23,7 +23,7 @@ describe Spree::Variant do
     context 'discount_type = dollar' do
       before :each do
         @variant = create :variant, :price => 10
-        @variant.group_prices.create! :amount => 1, :discount_type => 'dollar', :range => '(10+)'
+        @variant.group_prices.create! :name => '10 or more', :amount => 1, :discount_type => 'dollar', :range => '(10+)'
       end
 
       it 'should use the variants price when it does not match a range' do
@@ -38,7 +38,7 @@ describe Spree::Variant do
     context 'discount_type = percent' do
       before :each do
         @variant = create :variant, :price => 10
-        @variant.group_prices.create! :amount => 10, :discount_type => 'percent', :range => '(10+)'
+        @variant.group_prices.create! :name => '10 or more', :amount => 10, :discount_type => 'percent', :range => '(10+)'
       end
 
       it 'should use the variants price when it does not match a range' do
@@ -55,8 +55,8 @@ describe Spree::Variant do
   it '#current_group_price' do
     variant = create(:variant)
     variant.current_group_price.should be_nil
-    current_price = variant.group_prices.create! :amount => 9, :discount_type => 'price', :range => '(2..4)'
-    next_price = variant.group_prices.create! :amount => 8, :discount_type => 'price', :range => '(5+)'
+    current_price = variant.group_prices.create! :name => '2 to 4', :amount => 9, :discount_type => 'price', :range => '(2..4)'
+    next_price = variant.group_prices.create! :name => '5 or more', :amount => 8, :discount_type => 'price', :range => '(5+)'
     order = create(:completed_order_with_totals)
     order.line_items.first.quantity = 2
     order.line_items.first.variant = variant
@@ -66,9 +66,9 @@ describe Spree::Variant do
 
   it '#next_group_price' do
     variant = create(:variant)
-    variant.next_group_price.should eql(nil)
-    current_price = variant.group_prices.create! :amount => 9, :discount_type => 'price', :range => '(2..4)'
-    next_price = variant.group_prices.create! :amount => 8, :discount_type => 'price', :range => '(5+)'
+    variant.next_group_price.should be_nil
+    current_price = variant.group_prices.create! :name => '2 to 4', :amount => 9, :discount_type => 'price', :range => '(2..4)'
+    next_price = variant.group_prices.create! :name => '5 or more', :amount => 8, :discount_type => 'price', :range => '(5+)'
     variant.next_group_price.should eql(current_price)
     order = create(:completed_order_with_totals)
     order.line_items.first.quantity = 2
@@ -79,13 +79,13 @@ describe Spree::Variant do
     order.line_items.first.quantity = 4
     order.line_items.first.variant = variant
     order.save
-    variant.next_group_price.should eql(nil)
+    variant.next_group_price.should be_nil
   end
 
   it '#orders_until_next_group_price' do
     variant = create(:variant)
-    variant.group_prices.create! :amount => 9, :discount_type => 'price', :range => '(2..4)'
-    variant.group_prices.create! :amount => 8, :discount_type => 'price', :range => '(5+)'
+    variant.group_prices.create! :name => '2 to 4', :amount => 9, :discount_type => 'price', :range => '(2..4)'
+    variant.group_prices.create! :name => '5 or more', :amount => 8, :discount_type => 'price', :range => '(5+)'
     order = create(:completed_order_with_totals)
     order.line_items.first.variant = variant
     order.save

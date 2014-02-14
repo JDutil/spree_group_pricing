@@ -1,1 +1,2 @@
-"2.0.x"  => { :branch => "master" }
+"2.2.x"  => { :branch => "master" }
+"2.0.x"  => { :tag => "f87fa31ec418d62dc905da8083fa9f9b84188138" }

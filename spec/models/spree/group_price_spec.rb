@@ -1,9 +1,13 @@
+# coding: utf-8
 require 'spec_helper'
 
 describe Spree::GroupPrice do
   it { should belong_to(:variant) }
   it { should validate_presence_of(:variant) }
   it { should validate_presence_of(:amount) }
+
+  it { should validate_presence_of(:name) }
+  it { should validate_presence_of(:discount_type) }
 
   before(:each) do
     @group_price = build :group_price
@@ -19,12 +23,12 @@ describe Spree::GroupPrice do
     @group_price.range = "(1..2)"
     @group_price.should_not be_open_ended
   end
-  
+
   it "should properly interpret an open ended range" do
     @group_price.range = "(50+)"
     @group_price.should be_open_ended
   end
-  
+
   describe "valid range format" do
     it "should require the presence of a variant" do
       @group_price.variant = nil
@@ -61,7 +65,7 @@ describe Spree::GroupPrice do
       @group_price.should_not be_valid
     end
   end
-  
+
   describe "include?"  do
     it "should not match a quantity that fails to fall within the specified range" do
       @group_price.range = "(10..20)"
@@ -121,4 +125,25 @@ describe Spree::GroupPrice do
     end
   end
 
+  context 'display_discount' do
+    before do
+      Spree::Config[:currency] = 'EUR'
+      @group_percent = build(:group_price, :percent, range: '(2)', amount: 50)
+      @group_dollar  = build(:group_price, :dollar, amount: 10)
+    end
+
+    context 'return literal' do
+      it 'price' do
+        expect(@group_price.display_discount).to eq 'price becomes €10.00'
+      end
+
+      it 'percent' do
+        expect(@group_percent.display_discount).to eq '50%'
+      end
+
+      it 'dollar' do
+        expect(@group_dollar.display_discount).to eq '€10.00 off'
+      end
+    end
+  end
 end

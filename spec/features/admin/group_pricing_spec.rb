@@ -4,9 +4,9 @@ feature 'Admin - Group Pricing', js: true do
 
   stub_authorization!
 
-  let(:product) { create(:product) }
+  given(:product) { create(:product_with_option_types) }
 
-  before do
+  background do
     visit spree.admin_product_path(product)
   end
 
@@ -25,9 +25,10 @@ feature 'Admin - Group Pricing', js: true do
     scenario 'deleting a group price' do
       create(:group_price, variant: product.master)
       click_link 'Group Pricing'
-      click_link 'Remove'
-      wait_for_ajax
-      page.should_not have_content('Remove')
+      within_row(1) do
+        click_icon 'trash'
+      end
+      page.has_no_css?('.icon-edit')
     end
 
     scenario 'editing a group price' do
@@ -47,7 +48,7 @@ feature 'Admin - Group Pricing', js: true do
 
   context 'for another variant' do
 
-    before do
+    background do
       product.variants << create(:variant, product: product)
     end
 
@@ -72,7 +73,9 @@ feature 'Admin - Group Pricing', js: true do
       within_row(1) do
         click_icon 'edit'
       end
-      click_link 'Remove'
+      within_row(1) do
+        click_icon 'trash'
+      end
       click_button 'Update'
       pending 'not sure why routing is getting messed up causing a no variant found error from an AR Not Found error most likely rescued.'
       page.should have_content("Variant \"#{product.name}\" has been successfully updated!")

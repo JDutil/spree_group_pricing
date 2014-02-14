@@ -4,5 +4,6 @@
 pkg
 Gemfile.lock
 spec/dummy
-Guardfile
 coverage
+tmp
+.rvmrc
