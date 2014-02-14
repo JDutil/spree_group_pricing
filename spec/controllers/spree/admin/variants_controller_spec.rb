@@ -9,7 +9,7 @@ describe Spree::Admin::VariantsController do
 
       expect do
         spree_put :update,
-          :product_id => variant.product.slug,
+          :product_id => variant.product.permalink,
           :id => variant.id,
           :variant => {
             "group_prices_attributes" => {
