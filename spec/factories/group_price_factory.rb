@@ -1,3 +1,4 @@
+# coding: utf-8
 FactoryGirl.define do
   factory :group_price, class: Spree::GroupPrice do
     name '1-5'
