@@ -27,6 +27,7 @@ Dir[File.join(File.dirname(__FILE__), 'support/**/*.rb')].each { |f| require f }
 FactoryGirl.find_definitions
 
 RSpec.configure do |config|
+  config.infer_spec_type_from_file_location!
   config.mock_with :rspec
   config.include FactoryGirl::Syntax::Methods
   config.include Spree::TestingSupport::ControllerRequests
@@ -40,7 +41,7 @@ RSpec.configure do |config|
   end
 
   config.before :each do
-    DatabaseCleaner.strategy = example.metadata[:js] ? :truncation : :transaction
+    DatabaseCleaner.strategy = RSpec.current_example.metadata[:js] ? :truncation : :transaction
     DatabaseCleaner.start
   end
 
