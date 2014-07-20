@@ -26,11 +26,11 @@
       <% end %>
     </tbody>
   </table>
-  <%= link_to_with_icon('icon-plus', Spree.t("add_group_price"), 'javascript:', :data => { :target => "tbody#group_prices" }, :class => "spree_add_fields") %>
+  <%= link_to_with_icon('fa-plus', Spree.t("add_group_price"), 'javascript:', :data => { :target => "tbody#group_prices" }, :class => "spree_add_fields") %>
   <br/><br/>
   <div class="form-buttons filter-actions actions" data-hook="buttons">
-    <%= button Spree.t('actions.update'), 'icon-refresh' %>
+    <%= button Spree.t('actions.update'), 'fa-refresh' %>
     <span class="or"><%= Spree.t(:or) %></span>
-    <%= button_link_to Spree.t('actions.cancel'), spree.edit_admin_product_path(@product), :icon => 'icon-remove' %>
+    <%= button_link_to Spree.t('actions.cancel'), spree.edit_admin_product_path(@product), icon: 'remove' %>
   </div>
 <% end %>

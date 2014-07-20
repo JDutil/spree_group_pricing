@@ -13,7 +13,7 @@
   </thead>
   <tbody id="group_prices">
     <%= f.fields_for :group_prices do |vp_form| %>
-      <%= render 'spree/admin/group_prices/group_price_fields', :f => vp_form %>
+      <%= render 'spree/admin/group_prices/group_price_fields', f: vp_form %>
     <% end %>
   </tbody>
 </table>

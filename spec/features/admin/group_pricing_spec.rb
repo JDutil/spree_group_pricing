@@ -77,7 +77,7 @@ feature 'Admin - Group Pricing', js: true do
         click_icon 'trash'
       end
       click_button 'Update'
-      pending 'not sure why routing is getting messed up causing a no variant found error from an AR Not Found error most likely rescued.'
+      skip 'not sure why routing is getting messed up causing a no variant found error from an AR Not Found error most likely rescued.'
       page.should have_content("Variant \"#{product.name}\" has been successfully updated!")
       click_icon 'edit'
       page.should_not have_content('Remove')

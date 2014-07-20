@@ -21,11 +21,9 @@
     <%= f.text_field :position, :size => 3 %>
   </td>
   <td class="actions">
-    <%= link_to(icon('delete'),
+    <%= link_to(icon('fa-trash'),
       spree.admin_product_variant_path(@product, @variant),
-      class: 'icon_link icon-trash with-tip no-text spree_remove_fields',
-      title: Spree.t(:remove), data: { action: :remove }) %>
-
-    <%= f.hidden_field(:_destroy) %>
+      class: 'with-tip no-text spree_remove_fields',
+      title: Spree.t(:remove), data: { action: :remove }) + f.hidden_field(:_destroy) %>
   </td>
 </tr>

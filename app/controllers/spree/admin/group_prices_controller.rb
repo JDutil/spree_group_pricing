@@ -7,7 +7,7 @@ module Spree
       def destroy
         @group_price = Spree::GroupPrice.find(params[:id])
         @group_price.destroy
-        render :nothing => true
+        render nothing: true
       end
 
       def index
