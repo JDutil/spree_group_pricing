@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature 'Admin - Group Pricing', js: true do
+feature 'Admin - Group Pricing' do
 
   stub_authorization!
 
